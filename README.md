@@ -1,4 +1,9 @@
-TD
+# OpenShift to Amazon EKS Migration Workflow
+
+## Migration Flow Diagram
+
+```mermaid
+graph TD
     Start([Start Migration]) --> Phase1[Phase 1: Assessment<br/>32-52 hours]
     
     Phase1 --> P1A[Discovery & Inventory<br/>16-24h]
@@ -141,42 +146,7 @@ pie title Total Effort: 400-724 hours
     "Storage" : 40
 ```
 
-## Parallel Execution Model
 
-```mermaid
-graph TB
-    Start([Start]) --> Assessment[Assessment Phase]
-    Assessment --> Infrastructure[Infrastructure Setup]
-    
-    Infrastructure --> Parallel{Parallel Execution}
-    
-    Parallel --> Track1[Track 1: Application]
-    Parallel --> Track2[Track 2: Platform]
-    
-    Track1 --> App[App Migration]
-    Track1 --> CICD[CI/CD Migration]
-    
-    Track2 --> Security[Security & IAM]
-    Track2 --> Network[Networking]
-    Track2 --> Storage[Storage]
-    Track2 --> Monitor[Monitoring]
-    
-    App --> Converge{Converge}
-    CICD --> Converge
-    Security --> Converge
-    Network --> Converge
-    Storage --> Converge
-    Monitor --> Converge
-    
-    Converge --> Testing[Testing Phase]
-    Testing --> GoLive[Cutover & Go-Live]
-    GoLive --> End([Complete])
-    
-    style Start fill:#90EE90
-    style End fill:#90EE90
-    style Parallel fill:#FFD700
-    style Converge fill:#FFD700
-```
 
 ## Usage
 
